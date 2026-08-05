@@ -48,6 +48,8 @@
     --accent-light:#D9C9FF;
     --accent-soft:rgba(191,162,255,.10);
 
+    --spotlight: 210, 205, 235;
+
     --glass:rgba(24,24,31,.58);
 
     --radius:18px;
@@ -108,20 +110,43 @@ body::before{
 
     pointer-events:none;
 
-    background:
-
-        radial-gradient(
-
-            circle at 50% 120px,
-
-            rgba(72,66,94,.55),
-
-            transparent 48%
-
-        );
-
     z-index:-1;
 
+    background:
+
+    radial-gradient(
+
+        ellipse at 50% 18%,
+
+        rgba(235,230,255,.10) 0%,
+
+        rgba(215,205,245,.06) 30%,
+
+        rgba(170,150,230,.025) 55%,
+
+        transparent 82%
+
+    );
+
+}
+
+body::after{
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 35%,
+            rgba(0,0,0,.08) 60%,
+            rgba(0,0,0,.18) 85%,
+            rgba(0,0,0,.32) 100%
+        );
 }
 
 
