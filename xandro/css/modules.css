@@ -1057,28 +1057,6 @@ button{
 
 
 /* ========================================
-   RESPONSIVE
-======================================== */
-
-@media (max-width: 1100px){
-
-    .dashboard-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .left-column,
-    .right-column{
-
-        width:100%;
-
-    }
-
-}
-
-
-/* ========================================
    SMALL UI POLISH
 ======================================== */
 
@@ -1124,7 +1102,7 @@ button{
 
     line-height:1.8;
 
-    padding:32px 20px;
+    padding:18px;
 
     border:2px dashed rgba(255,255,255,.08);
 
@@ -1132,7 +1110,7 @@ button{
 
     background:rgba(255,255,255,.015);
 
-    min-height:150px;
+    min-height:80px;
 
 }
 

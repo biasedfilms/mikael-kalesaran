@@ -1,13 +1,17 @@
 // ========================================
 // PROJECT XANDRO
-// FIRST LAUNCH EXPERIENCE
+// SETUP MODULE
+// ========================================
+
+
+
+// ========================================
+// DOM
 // ========================================
 
 const bootScreen = document.getElementById("boot-screen");
 
-const branding = document.querySelector(".boot-branding");
-
-const welcomeCard = document.getElementById("welcome-card");
+const app = document.getElementById("app");
 
 const nameInput = document.getElementById("name-input");
 
@@ -15,135 +19,240 @@ const continueButton = document.getElementById("continue-btn");
 
 const errorText = document.getElementById("name-error");
 
-const Boot = {
 
-    state: "intro",
 
-    play(){
+// ========================================
+// STORAGE
+// ========================================
 
-        this.intro();
+const STORAGE = {
 
-    },
+    USER: "xandro_user"
 
-    intro(){
+};
 
-    bootScreen.classList.add("branding");
 
-    setTimeout(()=>{
+
+// ========================================
+// TIMINGS
+// ========================================
+
+const TIMING = {
+
+    INTRO: 4000, 
+
+    FADE: 1200,
+
+    REMOVE: 1400
+
+};
+
+// ========================================
+// HELPERS
+// ========================================
+
+function getUser(){
+
+    return load(STORAGE.USER, null);
+
+}
+
+
+
+function saveUser(name){
+
+    save(STORAGE.USER,{
+
+        name,
+
+        setupComplete:true
+
+    });
+
+}
+
+
+
+function revealDashboard(){
+
+    app.classList.add("show");
+
+}
+
+
+
+function removeBootScreen(){
+
+    bootScreen.remove();
+
+}
+
+// ========================================
+// BOOT
+// ========================================
+
+function playBootSequence() {
+
+    console.log("Initial:", getComputedStyle(document.getElementById("boot-logo")).opacity);
+
+    setTimeout(() => {
+
+        console.log("Adding branding");
+
+        const logo = document.getElementById("boot-logo");
+        const tagline = document.getElementById("boot-tagline");
+
+        logo.classList.add("visible");
+
+    setTimeout(() => {
+        tagline.classList.add("visible");
+},      350);
+
+        console.log("After branding:", getComputedStyle(document.getElementById("boot-logo")).opacity);
+
+    }, 2000);
+
+    setTimeout(() => {
 
         bootScreen.classList.remove("branding");
-
         bootScreen.classList.add("welcome");
-
-    },1500);
-
-},
-
-    showWelcome(){
-
-    setTimeout(()=>{
-
         nameInput.focus();
 
-        this.state="ready";
+    }, TIMING.INTRO);
 
-    },700);
+}
 
-},
-    finishSetup() {
+// ========================================
+// VALIDATION
+// ========================================
+
+function validateName(){
 
     const name = nameInput.value.trim();
 
-    if (!name){
+    if(name.length === 0){
 
         errorText.textContent = "Please enter your name.";
+
         errorText.style.visibility = "visible";
 
         nameInput.focus();
 
-        return;
+        preventScroll: true
 
-}
+        return null;
 
-// Valid name
+    }
+
     errorText.textContent = "";
+
     errorText.style.visibility = "hidden";
 
+    return name;
+
+}
+
+// ========================================
+// SETUP
+// ========================================
+
+function finishSetup(){
+
+    const name = validateName();
+
+    if(!name){
+
+        return;
+
+    }
+
     continueButton.disabled = true;
+
     continueButton.textContent = "Setting up...";
+
     continueButton.style.opacity = ".9";
 
-    save("xandro_user", {
+    saveUser(name);
 
-    name: name,
+    if(window.updateGreeting){
 
-    setupComplete: true
+        window.updateGreeting();
 
-});
-
-if (window.updateGreeting) {
-    window.updateGreeting();
-}
-
-    const app = document.getElementById("app");
+    }
 
     setTimeout(() => {
 
-    // Reveal dashboard underneath
-    app.style.visibility = "visible";
+        revealDashboard();
 
-    requestAnimationFrame(() => {
+        bootScreen.classList.add("fade-out");
 
-        app.style.opacity = "1";
+    }, 0);
 
-    });
-
-    // Fade away boot screen
-    bootScreen.classList.add("fade-out");
-
-},500);
-
-    setTimeout(() => {
-
-    bootScreen.remove();
-
-},1200);
+    bootScreen.addEventListener(
+        "transitionend",
+        removeBootScreen,
+    {   once: true }
+    );
 
 }
 
-};
+// ========================================
+// RETURNING USER
+// ========================================
 
-continueButton.addEventListener("click", () => {
+function skipSetup(){
 
-    Boot.finishSetup();
+    revealDashboard();
 
-});
+    removeBootScreen();
 
-nameInput.addEventListener("keydown", (event) => {
+}
 
-    if (event.key === "Enter") {
+// ========================================
+// EVENTS
+// ========================================
 
-        Boot.finishSetup();
+continueButton.addEventListener("click",finishSetup);
+
+nameInput.addEventListener("keydown",(event)=>{
+
+    if(event.key==="Enter"){
+
+        finishSetup();
 
     }
 
 });
 
-const user = load("xandro_user", null);
+// ========================================
+// INITIALIZATION
+// ========================================
 
-if(user?.setupComplete){
+document.addEventListener("DOMContentLoaded", () => {
 
-    const app = document.getElementById("app");
+    const user = getUser();
 
-    app.style.visibility = "visible";
+    if (user?.setupComplete) {
 
-    app.style.opacity = "1";
+        skipSetup();
 
-    bootScreen.remove();
+        return;
 
-}
-else{
+    }
 
-    Boot.play();
+    // Give the browser one frame to paint
+    setTimeout(() => {
 
-}
+        playBootSequence();
+
+    }, 100);
+
+});
+
+history.scrollRestoration = "manual";
+
+window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "instant"
+});

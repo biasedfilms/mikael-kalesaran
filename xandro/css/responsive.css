@@ -1,0 +1,217 @@
+/* ========================================
+   XANDRO RESPONSIVE
+   Version 1.1
+======================================== */
+
+/* ===========================
+   Large Desktop
+=========================== */
+
+@media (min-width: 1440px){
+
+}
+
+/* ===========================
+   Laptop
+=========================== */
+
+@media (max-width: 1200px){
+
+}
+
+/* ===========================
+   Tablet
+=========================== */
+
+@media (max-width: 992px){
+
+
+
+/* ===========================
+   MOBILE DASHBOARD
+=========================== */
+
+ html,
+    body{
+        overflow-x:hidden;
+    }
+
+    body{
+        padding:16px;
+    }
+
+    *{
+        max-width:100%;
+        box-sizing:border-box;
+    }
+
+/* ---------- Header ---------- */
+
+.top-bar{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    gap:14px;
+    margin-bottom:40px;
+}
+
+.branding{
+    text-align:center;
+    margin-bottom: 10px;
+}
+
+.branding h1{
+    font-size:2.8rem;
+    letter-spacing:4px;
+}
+
+.branding p{
+    font-size:.9rem;
+    letter-spacing:2px;
+}
+
+.dashboard-tagline{
+    display:none;
+}
+
+/* ---------- Clock ---------- */
+
+.clock{
+    padding-top:0;
+    text-align:center;
+}
+
+.clock h1{
+    font-size:3rem;
+}
+
+.date{
+    font-size:.9rem;
+    margin-top:14px;
+}
+
+/* ---------- Weather ---------- */
+
+.weather{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    text-align:center;
+    padding-top:16px;
+}
+
+.weather-main{
+    justify-content:center;
+}
+
+.weather-location{
+    margin-top:0;
+}
+
+
+.dashboard{
+    width:min(1550px,100%);
+}
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns: 2fr;
+
+    grid-template-areas:
+
+        "todo"
+
+        "notes"
+
+        "quote"
+
+        "progress"
+
+        "goals";
+
+    gap:18px;
+
+}
+
+/* Remove desktop grid placement */
+
+.quote,
+.progress,
+.goals{
+
+    grid-column:auto;
+
+}
+
+/* Stack columns */
+
+.left-column,
+.right-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+#todo-card{
+
+    grid-area:todo;
+
+}
+
+.notes{
+
+    grid-area:notes;
+
+}
+
+.quote{
+
+    grid-area:quote;
+
+}
+
+.progress{
+
+    grid-area:progress;
+
+}
+
+.goals{
+
+    grid-area:goals;
+
+}
+
+}
+/* ===========================
+   Small Phones
+=========================== */
+
+@media (max-width: 480px){
+
+    body{
+        padding:12px;
+    }
+
+    .branding h1{
+        font-size:2.3rem;
+    }
+
+    .clock h1{
+        font-size:2.4rem;
+    }
+
+    .card{
+        padding:14px;
+    }
+
+}
