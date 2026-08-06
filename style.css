@@ -215,7 +215,7 @@ p{
 
     color:var(--text-secondary);
 
-    line-height:1.9;
+    line-height:1.75;
 
 }
 
@@ -231,7 +231,7 @@ p{
 
 .description{
 
-    max-width:520px;
+    max-width:400px;
 
 }
 
@@ -258,7 +258,7 @@ p{
 
     background:var(--glass);
 
-    border:1px solid var(--border);
+    border:none;
 
     border-radius:999px;
 
@@ -283,6 +283,8 @@ p{
     color:var(--text-secondary);
 
     padding:10px 20px;
+
+    font-size:.95rem;
 
     border-radius:999px;
 
@@ -333,9 +335,9 @@ p{
 
     gap:38px;
 
-    min-height:100vh;
+    min-height:65vh;
 
-    margin-bottom:140px;
+    margin-bottom:40px;
 
 }
 
