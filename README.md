@@ -28,6 +28,8 @@ This portfolio reflects my passion for creating clean, intuitive, and user-focus
 
 One of the highlights of this portfolio is **XANDRO**, a custom-built personal dashboard inspired by modern operating systems.
 
+<img src="assets/xandro-preview.png" alt="Xandro Preview" width="900"/>
+
 It features a cinematic boot sequence, dynamic greeting system, weather integration, task and goal management, notes, progress tracking, and a live animated background—all built using **HTML, CSS, and Vanilla JavaScript**.
 
 ---
@@ -40,7 +42,7 @@ It features a cinematic boot sequence, dynamic greeting system, weather integrat
 
 ---
 
-## Visit
+## ⚜️ Visit 
 
 **https://mikaelkalesaran.com**
 
