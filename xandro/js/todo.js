@@ -65,16 +65,16 @@ function renderTasks() {
         li.innerHTML = `
             <input
                 type="checkbox"
+                class="task-checkbox"
                 ${task.completed ? "checked" : ""}
             >
 
             <span>${task.title}</span>
 
             <button class="delete-task">
-
                 ×
-
             </button>
+            
         `;
 
         const checkbox = li.querySelector("input");

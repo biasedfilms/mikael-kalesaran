@@ -22,9 +22,30 @@
 
 @font-face{
     font-family:"Markin";
-    src:url("fonts/MarkinLT-UltraBold.ttf") format("truetype");
+    src:url("assets/fonts/MarkinLT-UltraBold.ttf") format("truetype");
     font-style:normal;
     font-weight:700;
+}
+
+@font-face {
+    font-family: "Neue Montreal";
+    src: url("../assets/fonts/NeueMontreal-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Neue Montreal";
+    src: url("../assets/fonts/NeueMontreal-Medium.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Neue Montreal";
+    src: url("../assets/fonts/NeueMontreal-Bold.otf") format("opentype");
+    font-weight: 700;
+    font-style: normal;
 }
 
 
@@ -92,7 +113,7 @@ body{
 
     color:var(--text);
 
-    font-family:"Inter",sans-serif;
+    font-family:"Hanken Grotesk",sans-serif;
 
     -webkit-font-smoothing:antialiased;
 
@@ -179,7 +200,7 @@ body::after{
 
 h1{
 
-    font-family:"Markin",serif;
+    font-family:"Neue Montreal",Bold;
 
     font-size:4.2rem;
 
@@ -393,6 +414,36 @@ p{
         0 0 30px rgba(191,162,255,.18),
 
         0 18px 40px rgba(0,0,0,.30);
+
+}
+
+.name-wrapper{
+    overflow:hidden;
+}
+
+.hero-name{
+
+    opacity:0;
+
+    transform:translateY(18px);
+
+    line-height:0.95;
+
+    font-weight: 700;
+
+    transition:
+
+        opacity .65s ease,
+
+        transform .65s cubic-bezier(.22,1,.36,1);
+
+}
+
+.hero-name.show{
+
+    opacity:1;
+
+    transform:translateY(0);
 
 }
 
@@ -890,9 +941,9 @@ p{
 
 .footer{
 
-    margin-top:140px;
+    margin-top:170px;
 
-    padding-bottom:60px;
+    padding-bottom:50px;
 
     text-align:center;
 
@@ -1107,9 +1158,18 @@ p{
 
     .profile{
 
-        width:150px;
+        width:180px;
 
-        height:150px;
+        height:180px;
+
+        border-radius:50%;
+        object-fit:cover;
+
+        border:1px solid rgba(255,255,255,.08);
+
+        box-shadow:
+        
+        0 10px 40px rgba(0,0,0,.35);
 
     }
 
@@ -1120,3 +1180,4 @@ p{
     }
 
 }
+

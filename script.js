@@ -121,3 +121,23 @@ document.querySelectorAll(".navbar a").forEach(link => {
     });
 
 });
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+        document
+            .querySelector(".hero-name")
+            .classList.add("show");
+    }, 500);
+
+});
+
+document.querySelectorAll(".reveal").forEach((el,index)=>{
+
+    setTimeout(()=>{
+
+        el.classList.add("show");
+
+    },index*120);
+
+});

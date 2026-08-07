@@ -73,10 +73,25 @@ function saveUser(name){
 
 
 
-function revealDashboard(){
+function revealDashboard() {
 
+    document.body.classList.remove("lock-scroll");
+    
     app.classList.add("show");
 
+    requestAnimationFrame(() => {
+        document
+            .getElementById("dashboard-background")
+            .classList.add("show");
+    });
+
+    const video = document.getElementById("background-video");
+    const overlay = document.querySelector(".background-overlay");
+
+    video.classList.add("active");
+    overlay.classList.add("active");
+
+    
 }
 
 
@@ -229,6 +244,8 @@ nameInput.addEventListener("keydown",(event)=>{
 // ========================================
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    document.body.classList.add("lock-scroll");
 
     const user = getUser();
 
