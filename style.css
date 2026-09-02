@@ -1,26 +1,6 @@
-/* ==========================================================
-   Mikael Kalesaran Portfolio
-   Version 2.0
-   Part 1
-   ----------------------------------------------------------
-   Fonts
-   Variables
-   Reset
-   Base
-   Layout
-   Typography
-   Navigation
-   Hero
-   Status
-   Social Links
-========================================================== */
+/* Fonts */
 
-
-/* ==========================================================
-   Fonts
-========================================================== */
-
-@font-face{
+@font-face {
     font-family:"Markin";
     src:url("assets/fonts/MarkinLT-UltraBold.ttf") format("truetype");
     font-style:normal;
@@ -48,12 +28,9 @@
     font-style: normal;
 }
 
+/* Variables */
 
-/* ==========================================================
-   Variables
-========================================================== */
-
-:root{
+:root {
 
     --bg:#0F0F14;
 
@@ -87,12 +64,9 @@
 
 }
 
+/* Reset */
 
-/* ==========================================================
-   Reset
-========================================================== */
-
-*{
+* {
 
     margin:0;
     padding:0;
@@ -101,13 +75,13 @@
 
 }
 
-html{
+html {
 
     scroll-behavior:auto;
 
 }
 
-body{
+body {
 
     background:var(--bg);
 
@@ -121,7 +95,7 @@ body{
 
 }
 
-body::before{
+body::before {
 
     content:"";
 
@@ -151,7 +125,7 @@ body::before{
 
 }
 
-body::after{
+body::after {
     content: "";
 
     position: fixed;
@@ -170,12 +144,9 @@ body::after{
         );
 }
 
+/* Reset */
 
-/* ==========================================================
-   Layout
-========================================================== */
-
-.container{
+.container {
 
     width:min(90%,760px);
 
@@ -185,7 +156,7 @@ body::after{
 
 }
 
-.section{
+.section {
 
     margin-top:100px;
 
@@ -193,22 +164,21 @@ body::after{
 
 }
 
-#contact.section{
+#contact.section {
 
     margin-top:120px;
 
 }
 
+/* Typography */
 
-/* ==========================================================
-   Typography
-========================================================== */
+h1 {
 
-h1{
+    font-family:"Neue Montreal", Bold;
 
-    font-family:"Neue Montreal",Bold;
+    font-weight:700;
 
-    font-size:4.2rem;
+    font-size:4.1rem;
 
     line-height:.92;
 
@@ -218,7 +188,7 @@ h1{
 
 }
 
-h2{
+h2 {
 
     font-size:1.65rem;
 
@@ -230,7 +200,7 @@ h2{
 
 }
 
-h3{
+h3 {
 
     font-size:1.25rem;
 
@@ -238,7 +208,7 @@ h3{
 
 }
 
-p{
+p {
 
     color:var(--text-secondary);
 
@@ -246,28 +216,25 @@ p{
 
 }
 
-.subtitle{
+.subtitle {
 
-    margin-bottom:18px;
+    margin-bottom:28px;
 
-    color:var(--text-secondary);
+    color: #D6D3DE;
 
     font-size:1.1rem;
 
 }
 
-.description{
+.description {
 
     max-width:400px;
 
 }
 
+/* Navigation */
 
-/* ==========================================================
-   Navigation
-========================================================== */
-
-.navbar{
+.navbar {
 
     position:sticky;
 
@@ -303,7 +270,7 @@ p{
 
 }
 
-.navbar a{
+.navbar a {
 
     text-decoration:none;
 
@@ -327,7 +294,7 @@ p{
 
 }
 
-.navbar a:hover{
+.navbar a:hover {
 
     color:var(--accent);
 
@@ -339,7 +306,7 @@ p{
 
 }
 
-.navbar a.active{
+.navbar a.active {
 
     color:var(--accent);
 
@@ -349,12 +316,9 @@ p{
 
 }
 
+/* Hero */
 
-/* ==========================================================
-   Hero
-========================================================== */
-
-.hero{
+.hero {
 
     display:flex;
 
@@ -368,7 +332,7 @@ p{
 
 }
 
-.hero-content{
+.hero-content {
 
     display:flex;
 
@@ -380,7 +344,7 @@ p{
 
 }
 
-.profile{
+.profile {
 
     width:180px;
     height:180px;
@@ -401,7 +365,7 @@ p{
 
 }
 
-.profile:hover{
+.profile:hover {
 
     transform:
 
@@ -423,11 +387,11 @@ p{
 
 }
 
-.name-wrapper{
+.name-wrapper {
     overflow:hidden;
 }
 
-.hero-name{
+.hero-name {
 
     opacity:0;
 
@@ -445,7 +409,7 @@ p{
 
 }
 
-.hero-name.show{
+.hero-name.show {
 
     opacity:1;
 
@@ -453,12 +417,9 @@ p{
 
 }
 
+/* Status */
 
-/* ==========================================================
-   Status
-========================================================== */
-
-.status{
+.status {
 
     display:inline-flex;
 
@@ -494,7 +455,7 @@ p{
 
 }
 
-.status:hover{
+.status:hover {
 
     border-color:var(--accent);
 
@@ -504,7 +465,7 @@ p{
 
 }
 
-.dot{
+.dot {
 
     width:10px;
     height:10px;
@@ -523,7 +484,7 @@ p{
 
 }
 
-.status:hover .dot{
+.status:hover .dot {
 
     transform:scale(1.35);
 
@@ -533,40 +494,36 @@ p{
 
 }
 
-@keyframes pulse{
+@keyframes pulse {
 
-    0%{
+    0% {
 
         box-shadow:0 0 0 0 rgba(191,162,255,.45);
 
     }
 
-    70%{
+    70% {
 
         box-shadow:0 0 0 10px rgba(191,162,255,0);
 
     }
 
-    100%{
+    100% {
 
         box-shadow:0 0 0 0 rgba(191,162,255,0);
 
     }
+}
+
+/* Current */
+
+.current {
+
+    margin-top:50px;
 
 }
 
-
-/* ==========================================================
-   Current
-========================================================== */
-
-.current{
-
-    margin-top:34px;
-
-}
-
-.current h4{
+.current h4 {
 
     font-size:.95rem;
 
@@ -578,7 +535,7 @@ p{
 
 }
 
-.current ul{
+.current ul {
 
     list-style:none;
 
@@ -586,7 +543,7 @@ p{
 
 }
 
-.current li{
+.current li {
 
     position:relative;
 
@@ -602,7 +559,7 @@ p{
 
 }
 
-.current li::before{
+.current li::before {
 
     content:"";
 
@@ -628,7 +585,7 @@ p{
 
 }
 
-.current li:hover::before{
+.current li:hover::before {
 
     transform:scale(1.6);
 
@@ -636,7 +593,7 @@ p{
 
 }
 
-.current li:hover{
+.current li:hover {
 
     color:var(--accent-light);
 
@@ -646,12 +603,9 @@ p{
 
 }
 
+/* Socials */
 
-/* ==========================================================
-   Socials
-========================================================== */
-
-.socials{
+.socials {
 
     display:flex;
 
@@ -663,7 +617,7 @@ p{
 
 }
 
-.socials a{
+.socials a {
 
     display:inline-flex;
 
@@ -697,7 +651,7 @@ p{
 
 }
 
-.socials a:hover{
+.socials a:hover {
 
     transform:translateY(-2px);
 
@@ -711,11 +665,9 @@ p{
 
 }
 
-/* ==========================================================
-   Projects
-========================================================== */
+/* Projects */
 
-.project-card{
+.project-card {
 
     display:flex;
 
@@ -743,7 +695,7 @@ p{
 
 }
 
-.project-card:hover{
+.project-card:hover {
 
     transform:translateY(-6px);
 
@@ -759,13 +711,13 @@ p{
 
 }
 
-.project-card + .project-card{
+.project-card + .project-card {
 
     margin-top:28px;
 
 }
 
-.project-image{
+.project-image {
 
     width:100%;
 
@@ -785,7 +737,7 @@ p{
 
 }
 
-.project-card:hover .project-image{
+.project-card:hover .project-image {
 
     transform:scale(1.015);
 
@@ -795,7 +747,7 @@ p{
 
 }
 
-.project-header{
+.project-header {
 
     display:flex;
 
@@ -807,7 +759,7 @@ p{
 
 }
 
-.project-subtitle{
+.project-subtitle {
 
     margin-top:8px;
 
@@ -817,7 +769,7 @@ p{
 
 }
 
-.project-year{
+.project-year {
 
     color:var(--text-secondary);
 
@@ -825,7 +777,7 @@ p{
 
 }
 
-.tags{
+.tags {
 
     display:flex;
 
@@ -837,7 +789,7 @@ p{
 
 }
 
-.tags span{
+.tags span {
 
     padding:7px 14px;
 
@@ -861,7 +813,7 @@ p{
 
 }
 
-.tags span:hover{
+.tags span:hover {
 
     transform:translateY(-2px);
 
@@ -871,7 +823,7 @@ p{
 
 }
 
-.project-link{
+.project-link {
 
     display:inline-flex;
 
@@ -895,18 +847,15 @@ p{
 
 }
 
-.project-link:hover{
+.project-link:hover {
 
     gap:14px;
 
 }
 
+/* Contact */
 
-/* ==========================================================
-   Contact
-========================================================== */
-
-.contact-button{
+.contact-button {
 
     display:inline-flex;
 
@@ -940,7 +889,7 @@ p{
 
 }
 
-.contact-button:hover{
+.contact-button:hover {
 
     transform:translateY(-2px);
 
@@ -952,22 +901,19 @@ p{
 
 }
 
+/* Footer */
 
-/* ==========================================================
-   Footer
-========================================================== */
-
-.footer{
-
-    margin-top:120px;
-
-    padding-bottom:50px;
-
-    text-align:center;
-
+.footer {
+    margin-top: 60px;
+    padding-bottom: 2px;
+    text-align: center;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
-.footer-line{
+.footer-line {
 
     width:100%;
 
@@ -975,11 +921,11 @@ p{
 
     background:var(--border);
 
-    margin-bottom:34px;
+    margin-bottom:85px;
 
 }
 
-.footer-title{
+.footer-title {
 
     color:var(--text);
 
@@ -989,7 +935,7 @@ p{
 
 }
 
-.footer-text{
+.footer-text {
 
     color:var(--text-secondary);
 
@@ -997,7 +943,7 @@ p{
 
 }
 
-.signature{
+.signature {
 
     color:var(--text);
 
@@ -1005,7 +951,7 @@ p{
 
 }
 
-.footer-year{
+.footer-year {
 
     margin-top:18px;
 
@@ -1015,12 +961,7 @@ p{
 
 }
 
-
-/* ==========================================================
-   Reveal Animation
-========================================================== */
-
-.reveal{
+.reveal {
 
     opacity:0;
 
@@ -1040,7 +981,7 @@ p{
 
 }
 
-.reveal.show{
+.reveal.show {
 
     opacity:1;
 
@@ -1048,12 +989,9 @@ p{
 
 }
 
+/* Selection */
 
-/* ==========================================================
-   Selection
-========================================================== */
-
-::selection{
+::selection {
 
     background:rgba(191,162,255,.35);
 
@@ -1061,24 +999,21 @@ p{
 
 }
 
+/* Scrollbar */
 
-/* ==========================================================
-   Scrollbar
-========================================================== */
-
-::-webkit-scrollbar{
+::-webkit-scrollbar {
 
     width:10px;
 
 }
 
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-track {
 
     background:var(--bg);
 
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
 
     background:#343442;
 
@@ -1086,20 +1021,17 @@ p{
 
 }
 
-::-webkit-scrollbar-thumb:hover{
+::-webkit-scrollbar-thumb:hover {
 
     background:var(--accent);
 
 }
 
+/* Mobile */
 
-/* ==========================================================
-   Mobile
-========================================================== */
+@media (max-width:900px) {
 
-@media (max-width:900px){
-
-    .hero{
+    .hero {
 
         flex-direction:column;
 
@@ -1113,19 +1045,19 @@ p{
 
     }
 
-    .hero-content{
+    .hero-content {
 
         align-items:center;
 
     }
 
-    .description{
+    .description {
 
         max-width:100%;
 
     }
 
-    .current{
+    .current {
 
         text-align:left;
 
@@ -1133,69 +1065,114 @@ p{
 
     }
 
-    .socials{
+    .socials {
 
         justify-content:center;
 
     }
 
-    .project-header{
+    .project-header {
 
         flex-direction:column;
 
         gap:8px;
 
     }
-
 }
 
+@media (max-width:640px) {
 
-@media (max-width:640px){
-
-    h1{
-
-        font-size:3rem;
-
+    .container {
+        width:82%;
     }
 
-    .navbar{
-
-        width:100%;
-
-        justify-content:center;
-
+    .navbar {
+        width:88%;
+        margin:18px auto 48px;
     }
 
-    .navbar a{
-
+    .navbar a {
         flex:1;
-
         text-align:center;
-
+        padding:8px 6px;
+        font-size:.82rem;
     }
 
-    .profile{
-
-        width:180px;
-
-        height:180px;
-
-        border-radius:50%;
-        object-fit:cover;
-
-        border:1px solid rgba(255,255,255,.08);
-
-        box-shadow:
-        
-        0 10px 40px rgba(0,0,0,.35);
-
+    .hero {
+        gap:14px;
+        margin-bottom:30px;
     }
 
-    .project-card{
-
-        padding:20px;
-
+    .profile {
+        width:138px;
+        height:138px;
     }
 
+    .status {
+        margin-bottom:12px;
+    }
+
+    h1 {
+        font-size:2.3rem;
+        letter-spacing:-.6px;
+    }
+
+    .subtitle {
+        font-size:.82rem;
+        line-height:1.45;
+        margin-bottom:20px;
+        white-space: nowrap;
+    }
+
+    .description {
+        max-width:300px;
+        font-size:.82rem;
+        line-height:1.6;
+    }
+
+    .current {
+    text-align: center;
+    width: 100%;
+    margin-top: 36px;
+    }
+
+    .current h4 {
+        text-align: center;
+        font-size: .9rem;
+        margin-bottom: 24px;
+    }
+
+    .current li {
+        position: relative;
+        width: 100%;
+        max-width: 340px;
+        margin: 0 auto 9px;
+        margin-bottom: 18px;
+        padding-left: 8px;
+        text-align: left;
+        font-size: .86rem;
+        line-height: 1.5;
+        white-space: nowrap;
+    }
+
+    .current li::before {
+        position: absolute;
+        left: 0;
+        top: .6em;
+        margin: 0;
+    }
+
+    .socials {
+        gap:8px;
+        margin-top:18px;
+    }
+
+    .socials a {
+        padding:8px 11px;
+        font-size:.84rem;
+    }
+
+    .project-card {
+        padding:18px;
+    }
 }
-

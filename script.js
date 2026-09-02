@@ -1,11 +1,6 @@
 history.scrollRestoration = "manual";
 window.scrollTo(0, 0);
 
-
-/* =========================
-   Reveal Animation
-========================= */
-
 const reveals = document.querySelectorAll(".reveal");
 
 const observer = new IntersectionObserver((entries)=>{
@@ -33,11 +28,6 @@ const observer = new IntersectionObserver((entries)=>{
 });
 
 reveals.forEach(el=>observer.observe(el));
-
-
-/* =========================
-   Active Navigation
-========================= */
 
 const sections = document.querySelectorAll("section[id]");
 
@@ -74,10 +64,6 @@ sections.forEach(section=>{
     navObserver.observe(section);
 
 });
-
-/* =========================
-   Smooth Navigation
-========================= */
 
 function smoothScroll(targetY, duration = 800) {
 
@@ -116,7 +102,7 @@ document.querySelectorAll(".navbar a").forEach(link => {
 
         const target = document.querySelector(link.getAttribute("href"));
 
-        smoothScroll(target.offsetTop - 110,);
+        smoothScroll(target.offsetTop - 110);
 
     });
 
@@ -129,15 +115,5 @@ window.addEventListener("load", () => {
             .querySelector(".hero-name")
             .classList.add("show");
     }, 500);
-
-});
-
-document.querySelectorAll(".reveal").forEach((el,index)=>{
-
-    setTimeout(()=>{
-
-        el.classList.add("show");
-
-    },index*120);
 
 });
