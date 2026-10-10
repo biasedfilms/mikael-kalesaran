@@ -1,217 +1,540 @@
 /* ========================================
-   XANDRO RESPONSIVE
-   Version 1.1
+   XANDRO RESPONSIVE LAYOUT
+   Compact desktop, iPad/tablet, and mobile
 ======================================== */
 
-/* ===========================
-   Large Desktop
-=========================== */
-
-@media (min-width: 1440px){
-
+:root {
+    --dashboard-gutter: clamp(16px, 3vw, 40px);
 }
 
-/* ===========================
-   Laptop
-=========================== */
-
-@media (max-width: 1200px){
-
-}
-
-/* ===========================
-   Tablet
-=========================== */
-
-@media (max-width: 992px){
-
-
-
-/* ===========================
-   MOBILE DASHBOARD
-=========================== */
-
- html,
-    body{
-        overflow-x:hidden;
-    }
-
-    body{
-        padding:16px;
-    }
-
-    *{
-        max-width:100%;
-        box-sizing:border-box;
-    }
-
-/* ---------- Header ---------- */
-
-.top-bar{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-    gap:14px;
-    margin-bottom:40px;
-}
-
-.branding{
-    text-align:center;
-    margin-bottom: 10px;
-}
-
-.branding h1{
-    font-size:2.8rem;
-    letter-spacing:4px;
-}
-
-.branding p{
-    font-size:.9rem;
-    letter-spacing:2px;
-}
-
-.dashboard-tagline{
-    display:none;
-}
-
-/* ---------- Clock ---------- */
-
-.clock{
-    padding-top:0;
-    text-align:center;
-}
-
-.clock h1{
-    font-size:3rem;
-}
-
-.date{
-    font-size:.9rem;
-    margin-top:14px;
-}
-
-/* ---------- Weather ---------- */
-
-.weather{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:6px;
-    text-align:center;
-    padding-top:16px;
-}
-
-.weather-main{
-    justify-content:center;
-}
-
-.weather-location{
-    margin-top:0;
-}
-
-
-.dashboard{
-    width:min(1550px,100%);
-}
-
-.dashboard-grid{
-
-    display:grid;
-
-    grid-template-columns: 2fr;
-
-    grid-template-areas:
-
-        "todo"
-
-        "notes"
-
-        "quote"
-
-        "progress"
-
-        "goals";
-
-    gap:18px;
-
-}
-
-/* Remove desktop grid placement */
-
-.quote,
-.progress,
-.goals{
-
-    grid-column:auto;
-
-}
-
-/* Stack columns */
-
+.dashboard,
+.dashboard-grid,
 .left-column,
-.right-column{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:18px;
-
+.right-column,
+.card,
+.card-header,
+.notes-content,
+.goal,
+.task {
+    min-width: 0;
 }
 
-#todo-card{
-
-    grid-area:todo;
-
+#name-input,
+#task-input,
+#goal-input,
+#notes-input {
+    max-width: 100%;
 }
 
-.notes{
-
-    grid-area:notes;
-
-}
-
-.quote{
-
-    grid-area:quote;
-
-}
-
-.progress{
-
-    grid-area:progress;
-
-}
-
-.goals{
-
-    grid-area:goals;
-
-}
-
-}
-/* ===========================
-   Small Phones
-=========================== */
-
-@media (max-width: 480px){
-
-    body{
-        padding:12px;
+/* Mid-size desktop and tablet landscape */
+@media (max-width: 1200px) and (min-width: 901px) {
+    .dashboard {
+        width: min(100%, 1400px);
+        padding: 22px var(--dashboard-gutter) 32px;
     }
 
-    .branding h1{
-        font-size:2.3rem;
+    .top-bar {
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        gap: clamp(14px, 2vw, 24px);
     }
 
-    .clock h1{
-        font-size:2.4rem;
+    .branding h1 {
+        font-size: clamp(3.5rem, 5.7vw, 4.5rem);
     }
 
-    .card{
-        padding:14px;
+    .dashboard-grid {
+        grid-template-columns: minmax(0, 1.55fr) minmax(260px, 1fr);
+        gap: 18px;
     }
 
+    .left-column,
+    .right-column {
+        gap: 18px;
+    }
+
+    .card {
+        padding: clamp(16px, 1.8vw, 20px);
+    }
+}
+
+/* iPad portrait and compact tablets: retain two useful columns while allowing
+   the existing reading order to flow naturally down the page. */
+@media (max-width: 900px) and (min-width: 681px) {
+    body {
+        padding: 0;
+    }
+
+    .dashboard {
+        width: min(100%, 900px);
+        padding: 22px clamp(22px, 4vw, 34px) 32px;
+    }
+
+    .top-bar {
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        align-items: center;
+        gap: clamp(12px, 2vw, 20px);
+        margin-bottom: 24px;
+    }
+
+    .branding h1 {
+        font-size: clamp(3rem, 6vw, 3.8rem);
+        letter-spacing: 1.5px;
+    }
+
+    #greeting {
+        font-size: .74rem;
+        letter-spacing: .1em;
+        overflow-wrap: anywhere;
+    }
+
+    .dashboard-tagline {
+        font-size: .68rem;
+        letter-spacing: .08em;
+    }
+
+    .clock {
+        font-size: clamp(1.5rem, 3vw, 1.9rem);
+        white-space: nowrap;
+    }
+
+    .date {
+        margin-top: 8px;
+        font-size: .82rem;
+        text-align: center;
+    }
+
+    .weather {
+        align-items: flex-end;
+        gap: 4px;
+        padding-top: 0;
+        text-align: right;
+    }
+
+    .weather-main {
+        justify-content: flex-end;
+        gap: 6px;
+        font-size: 1.65rem;
+    }
+
+    .weather-location {
+        margin-top: 2px;
+        font-size: .78rem;
+        overflow-wrap: anywhere;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .left-column,
+    .right-column {
+        gap: 16px;
+    }
+
+    .card {
+        padding: 17px;
+        border-radius: 16px;
+    }
+
+    .card-header {
+        gap: 10px;
+    }
+
+    .card h2 {
+        letter-spacing: 1.4px;
+    }
+
+    #todo-card {
+        min-height: 220px;
+    }
+
+    #notes-input {
+        min-height: 150px;
+        padding: 12px 14px;
+    }
+
+    .goal {
+        gap: 9px;
+        padding: 10px;
+    }
+}
+
+/* Phones and narrow split-screen windows */
+@media (max-width: 680px) {
+    body {
+        padding: 0;
+    }
+
+    .dashboard {
+        width: 100%;
+        min-height: 100vh;
+        min-height: 100svh;
+        margin: 0;
+        padding: max(18px, env(safe-area-inset-top)) clamp(14px, 4.5vw, 22px) max(26px, env(safe-area-inset-bottom));
+    }
+
+    .top-bar {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: start;
+        gap: 12px 10px;
+        margin-bottom: 24px;
+        text-align: left;
+    }
+
+    .branding {
+        grid-column: 1;
+        grid-row: 1;
+        align-items: flex-start;
+        text-align: left;
+        min-width: 0;
+    }
+
+    .branding h1 {
+        font-size: clamp(2.8rem, 11vw, 3.75rem);
+        letter-spacing: 1.5px;
+    }
+
+    #greeting {
+        max-width: 100%;
+        font-size: .65rem;
+        letter-spacing: .1em;
+        overflow-wrap: anywhere;
+    }
+
+    .dashboard-tagline {
+        display: none;
+    }
+
+    .weather {
+        grid-column: 2;
+        grid-row: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-start;
+        gap: 2px;
+        min-width: 0;
+        padding-top: 5px;
+        text-align: right;
+    }
+
+    .weather-main {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 5px;
+        font-size: 1.55rem;
+    }
+
+    .weather-location {
+        max-width: 110px;
+        margin-top: 2px;
+        font-size: .72rem;
+        overflow-wrap: anywhere;
+    }
+
+    .header-center {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        justify-self: center;
+        width: 100%;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    .clock {
+        font-size: clamp(2.35rem, 10vw, 3.15rem);
+        line-height: 1.05;
+        white-space: nowrap;
+    }
+
+    .date {
+        margin-top: 8px;
+        font-size: .82rem;
+        text-align: center;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .left-column,
+    .right-column {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .card {
+        width: 100%;
+        padding: 17px;
+        border-left-width: 3px;
+        border-radius: 16px;
+    }
+
+    .card-header {
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .card h2 {
+        font-size: .78rem;
+        letter-spacing: 1.3px;
+    }
+
+    #todo-card {
+        min-height: 0;
+        max-height: none;
+    }
+
+    .todo-content {
+        max-height: min(42svh, 330px);
+    }
+
+    .task-input-container {
+        max-height: 100px;
+    }
+
+    #task-input,
+    #goal-input,
+    #notes-input,
+    #name-input {
+        font-size: 16px;
+    }
+
+    #task-input,
+    #goal-input {
+        min-height: 46px;
+        padding: 12px 14px;
+    }
+
+    #notes-input {
+        min-height: 165px;
+        padding: 12px 13px;
+        line-height: 1.75;
+    }
+
+    #add-task-btn,
+    #add-goal-btn {
+        flex: 0 0 44px;
+        width: 44px;
+        height: 44px;
+    }
+
+    .goal {
+        gap: 9px;
+        padding: 10px;
+    }
+
+    .goal span {
+        min-width: 0;
+        overflow-wrap: anywhere;
+        font-size: .9rem;
+    }
+
+    .goal-toggle,
+    .delete-goal {
+        flex: 0 0 40px;
+        width: 40px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+
+    .delete-goal {
+        opacity: 1;
+        transform: none;
+    }
+
+    #welcome-content {
+        width: min(520px, calc(100% - 32px));
+        padding: 16px 12px max(20px, env(safe-area-inset-bottom));
+        gap: 17px;
+    }
+
+    #welcome-content h2 {
+        font-size: clamp(1.8rem, 8vw, 2.2rem);
+    }
+
+    #name-input {
+        width: 100%;
+        min-height: 50px;
+        padding: 14px 16px;
+    }
+
+    .welcome-actions {
+        width: 100%;
+        margin-top: 8px;
+    }
+
+    #continue-btn {
+        min-width: 170px;
+        min-height: 48px;
+    }
+
+    #boot-screen.welcome .boot-branding {
+        transform: translateY(calc(-1 * clamp(120px, 34vh, 210px)));
+    }
+}
+
+@media (max-width: 380px) {
+    .dashboard {
+        padding-right: 13px;
+        padding-left: 13px;
+    }
+
+    .top-bar {
+        gap: 10px 6px;
+    }
+
+    .branding h1 {
+        font-size: 2.65rem;
+        letter-spacing: 1px;
+    }
+
+    #greeting {
+        font-size: .6rem;
+        letter-spacing: .08em;
+    }
+
+    .weather-main {
+        font-size: 1.4rem;
+    }
+
+    .weather-location {
+        max-width: 90px;
+        font-size: .68rem;
+    }
+
+    .clock {
+        font-size: clamp(2.15rem, 10vw, 2.6rem);
+    }
+
+    .card {
+        padding: 15px;
+    }
+}
+
+/* Landscape phones and iPad split-screen: prioritize usable height and width. */
+@media (max-height: 520px) and (orientation: landscape) {
+    #boot-screen.welcome .boot-branding {
+        transform: translateY(-130px);
+    }
+
+    #welcome-content {
+        gap: 10px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    #welcome-content h2 {
+        font-size: 1.65rem;
+    }
+
+    #name-input {
+        min-height: 42px;
+        padding-block: 10px;
+    }
+
+    .welcome-actions {
+        margin-top: 2px;
+    }
+
+    .dashboard {
+        padding-top: 16px;
+    }
+}
+
+/* Hover states are reserved for real hover devices. On touch, destructive and
+   completion controls stay visible and cards never shift under a finger. */
+@media (hover: none), (pointer: coarse) {
+    .card:hover,
+    .goal:hover,
+    .goal:hover .delete-goal,
+    .goal-toggle:hover,
+    .task:hover .delete-task {
+        transform: none;
+    }
+
+    .card:hover {
+        border-color: #2f2f2f;
+        box-shadow: none;
+    }
+
+    .task:hover {
+        background: #242424;
+    }
+
+    .delete-task:hover {
+        background: transparent;
+        color: #777;
+    }
+
+    .goal:hover {
+        background: #242424;
+    }
+
+    .goal:hover .delete-goal {
+        opacity: 1;
+    }
+
+    .delete-task {
+        opacity: 1;
+        transform: none;
+        flex: 0 0 38px;
+        width: 38px;
+        height: 38px;
+    }
+
+    .task input {
+        flex: 0 0 22px;
+        width: 22px;
+        height: 22px;
+    }
+
+    #add-task-btn,
+    #add-goal-btn,
+    #continue-btn,
+    .goal-toggle,
+    .delete-goal,
+    input,
+    textarea {
+        touch-action: manipulation;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #background-video {
+        display: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+
+/* Static fallback behind the dashboard when mobile or reduced-motion sessions skip video. */
+#dashboard-background {
+    background:
+        radial-gradient(circle at 14% 12%, rgba(209, 26, 42, .12), transparent 36%),
+        radial-gradient(circle at 82% 78%, rgba(209, 26, 42, .05), transparent 42%),
+        var(--bg);
+}
+
+@media (max-width: 680px), (prefers-reduced-motion: reduce) {
+    #background-video {
+        display: none;
+    }
+
+    .background-overlay {
+        background: rgba(0, 0, 0, .28);
+    }
 }

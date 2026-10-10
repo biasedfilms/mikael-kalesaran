@@ -86,10 +86,25 @@ function revealDashboard() {
     });
 
     const video = document.getElementById("background-video");
+    const videoSource = video?.querySelector("source[data-src]");
     const overlay = document.querySelector(".background-overlay");
+    const shouldUseVideo = window.matchMedia(
+        "(min-width: 681px) and (prefers-reduced-motion: no-preference)"
+    ).matches;
 
-    video.classList.add("active");
-    overlay.classList.add("active");
+    // The decorative 4.5 MB background is deferred until onboarding completes.
+    // Phone-sized and reduced-motion sessions keep the same dark visual treatment
+    // without downloading or animating the video.
+    if (video && shouldUseVideo && videoSource?.dataset.src) {
+        videoSource.src = videoSource.dataset.src;
+        video.load();
+        video.classList.add("active");
+        video.play().catch(() => {});
+    } else {
+        video?.classList.remove("active");
+    }
+
+    overlay?.classList.add("active");
 
     
 }
